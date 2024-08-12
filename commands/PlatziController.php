@@ -2,8 +2,9 @@
 
 namespace app\commands;
 
-use yii\console\Controller;
+use app\models\Book;
 use yii\console\ExitCode;
+use yii\console\Controller;
 
 /**
  * Comando para clase, de prueba
@@ -26,7 +27,12 @@ class PlatziController extends Controller {
         $f = fopen($file, "r");
         while(!feof($f)) {
             $data = fgetcsv($f);
-            print_r($data);
+            if(!empty($data[1]) && !empty($data[2])) {
+                $book = new Book;
+                $book->title = $data[1];
+                $book->author = $data[2];
+                printf("%s\n", $book->toString());
+            }
         }
         fclose($f);
         return ExitCode::OK;
