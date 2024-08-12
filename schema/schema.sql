@@ -32,3 +32,4 @@ create table if not exists club_members (
     modified_at timestamp not null default current_timestamp on update current_timestamp,
     unique key no_rep(user_id, club_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
